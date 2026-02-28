@@ -14,6 +14,6 @@ It controls both header and tab content scrolling to ensure smooth collapse and 
 
 ## 3. Trade-offs and Limitations
 
-Slightly more complex than a simple scroll view.
-Large lists may need lazy loading or pagination.
-Horizontal and vertical gestures rely on Flutter’s default gesture system, so custom gestures could conflict.
+- Slightly more complex than a simple scroll view.
+- Large lists may need lazy loading or pagination.
+- Horizontal and vertical gestures rely on Flutter’s default gesture system, so custom gestures could conflict.
