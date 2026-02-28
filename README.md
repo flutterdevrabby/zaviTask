@@ -1,17 +1,19 @@
-# zavisoft_task
+# Flutter Product Sliver
 
-A new Flutter project.
 
-## Getting Started
+## 1. How Horizontal Swipe Was Implemented
 
-This project is a starting point for a Flutter application.
+Used TabBarView which is built on Flutter's PageView internally.
+It handles horizontal swipes automatically. 
 
-A few resources to get you started if this is your first Flutter project:
+## 2. Who Owns the Vertical Scroll and Why
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+NestedScrollView is the single owner of the vertical scroll axis.
+It controls both header and tab content scrolling to ensure smooth collapse and independent tab scroll.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## 3. Trade-offs and Limitations
+
+Slightly more complex than a simple scroll view.
+Large lists may need lazy loading or pagination.
+Horizontal and vertical gestures rely on Flutter’s default gesture system, so custom gestures could conflict.
