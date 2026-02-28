@@ -1,7 +1,7 @@
-// class AssetsImage {
-//   AssetsImage._();
-//   static const String nodataImage = "assets/images/no_data.png";
-// }
+class AssetsImage {
+  AssetsImage._();
+  static const String nodataImage = "assets/images/no_image_available.png";
+}
 
 class AssetsIcon {
   AssetsIcon._();

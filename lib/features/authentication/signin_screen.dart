@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:zavisoft_task/constants/assets_path.dart';
+import 'package:zavisoft_task/routes/routes.dart';
 
 import '../../../../constants/text_font_style.dart';
 import '../../common_widget/custom_button.dart';
@@ -19,8 +21,11 @@ class SigninScreen extends StatefulWidget {
 
 class _SigninScreenState extends State<SigninScreen> {
   final emailController = TextEditingController();
+  final nameController = TextEditingController();
   final passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
+  String errorMesage = "";
   @override
   Widget build(BuildContext context) {
     return Consumer<SignInProvider>(
@@ -72,6 +77,17 @@ class _SigninScreenState extends State<SigninScreen> {
                     SizedBox(height: 32.h),
 
                     CustomTextField(
+                      hintText: "Name",
+                      controller: nameController,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "name is reqired";
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 20.h),
+                    CustomTextField(
                       hintText: "Email",
                       controller: emailController,
                       validator: emailValidation,
@@ -105,11 +121,23 @@ class _SigninScreenState extends State<SigninScreen> {
                     SizedBox(height: 20.h),
 
                     CustomButton(
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {}
+                      onPressed: () async {
+                        if (_formKey.currentState!.validate()) {
+                          context.go(
+                            AppRoutes.homeScreen,
+                            extra: {
+                              "name": nameController.text,
+                              "email": emailController.text,
+                            },
+                          );
+                        }
                       },
-                      text: "Sign In",
+                      text: "Sign Up",
                     ),
+
+                    SizedBox(height: 20.h),
+
+                    Text(errorMesage),
                   ],
                 ),
               ),
